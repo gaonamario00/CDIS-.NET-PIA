@@ -1,0 +1,10 @@
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\bin\Debug\CdisMart_DAL.dll.config
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\bin\Debug\CdisMart_DAL.dll
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\bin\Debug\CdisMart_DAL.pdb
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\bin\Debug\EntityFramework.dll
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\bin\Debug\EntityFramework.xml
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\obj\Debug\CdisMart_DAL.csproj.AssemblyReference.cache
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\obj\Debug\CdisMart_DAL.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\obj\Debug\CdisMart_DAL.csproj.CopyComplete
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\obj\Debug\CdisMart_DAL.dll
+C:\Users\Lenovo\source\repos\CdisMart\CdisMart_DAL\obj\Debug\CdisMart_DAL.pdb
