@@ -33,6 +33,15 @@ namespace CdisMart
         protected global::System.Web.UI.WebControls.TextBox TextNombre;
 
         /// <summary>
+        /// Control rfv_nombreCompleto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_nombreCompleto;
+
+        /// <summary>
         /// Control TextEmail.
         /// </summary>
         /// <remarks>
@@ -40,6 +49,24 @@ namespace CdisMart
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextEmail;
+
+        /// <summary>
+        /// Control rfv_email.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_email;
+
+        /// <summary>
+        /// Control rev_nombreCompleto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rev_nombreCompleto;
 
         /// <summary>
         /// Control TextUsuario.
@@ -51,6 +78,15 @@ namespace CdisMart
         protected global::System.Web.UI.WebControls.TextBox TextUsuario;
 
         /// <summary>
+        /// Control rfv_userName.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_userName;
+
+        /// <summary>
         /// Control TextPassword.
         /// </summary>
         /// <remarks>
@@ -60,6 +96,15 @@ namespace CdisMart
         protected global::System.Web.UI.WebControls.TextBox TextPassword;
 
         /// <summary>
+        /// Control rfv_password.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_password;
+
+        /// <summary>
         /// Control TextPassword2.
         /// </summary>
         /// <remarks>
@@ -67,6 +112,15 @@ namespace CdisMart
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextPassword2;
+
+        /// <summary>
+        /// Control rfv_confirmarPassword.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_confirmarPassword;
 
         /// <summary>
         /// Control btnregistrarse.

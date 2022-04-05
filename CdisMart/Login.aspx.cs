@@ -20,13 +20,18 @@ namespace CdisMart
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            if (usuarioValido())
+            if (verificarCampos())
             {
-                Response.Redirect("~/CdisMart/User_Alta.aspx");
-            }
-            else
-            {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Sesion", "alert('El usuario y/o la contraseña son invalidos!')", true);
+
+            
+                if (usuarioValido())
+                {
+                    Response.Redirect("~/CdisMart/Subastas_s.aspx");
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Sesion", "alert('El usuario y/o la contraseña son invalidos!')", true);
+                }
             }
         }
 
@@ -52,6 +57,16 @@ namespace CdisMart
             }
 
             return acceso;
+        }
+
+        public Boolean verificarCampos()
+        {
+            if (TextUsuario.Text.Equals("") || TextPassword.Text.Equals(""))
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Sesion", "alert('Debe de llenar todos los campos!')", true);
+                return false;
+            }
+            else return true;
         }
 
         #endregion

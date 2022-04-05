@@ -2,6 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-
+    <asp:Label runat="server" ID="lblNombreUsuario"></asp:Label>
 
 </asp:Content>

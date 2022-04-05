@@ -20,7 +20,7 @@
                  <tr>
                     <td>Contraseña:</td>
                     <td>
-                        <asp:TextBox ID="TextPassword" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextPassword" runat="server" TextMode="Password"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

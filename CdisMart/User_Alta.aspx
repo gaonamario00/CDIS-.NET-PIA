@@ -14,31 +14,43 @@
                  <tr>
                     <td>Nombre completo:</td>
                     <td>
-                        <asp:TextBox ID="TextNombre" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextNombre" runat="server" MaxLength="50" ></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfv_nombreCompleto" runat="server" ControlToValidate="TextNombre"
+                             ErrorMessage="Campo de Nombre obligatorio" ValidationGroup="vlg1"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                  <tr>
                     <td>Email:</td>
                     <td>
                         <asp:TextBox ID="TextEmail" runat="server"></asp:TextBox>
+                           <asp:RequiredFieldValidator ID="rfv_email" runat="server" ControlToValidate="TextEmail"
+                             ErrorMessage="Campo de Email obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RegularExpressionValidator ID="rev_nombreCompleto" runat="server" ErrorMessage="Debe tener el formato example@something.com"
+                             ControlToValidate="TextEmail" ValidationExpression="[a-z]+[0-9]*@[a-z]+[.]com" ValidationGroup="vlg1" Display="Dynamic"></asp:RegularExpressionValidator>
                     </td>
                 </tr>
                 <tr>
                     <td>Nombre usuario:</td>
                     <td>
-                        <asp:TextBox ID="TextUsuario" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextUsuario" runat="server" MaxLength="10"></asp:TextBox>
+                         <asp:RequiredFieldValidator ID="rfv_userName" runat="server" ControlToValidate="TextUsuario"
+                             ErrorMessage="Campo de Nombre de usuario obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                  <tr>
                     <td>Contraseña:</td>
                     <td>
-                        <asp:TextBox ID="TextPassword" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextPassword" runat="server" MaxLength="10" TextMode="Password"></asp:TextBox>
+                         <asp:RequiredFieldValidator ID="rfv_password" runat="server" ControlToValidate="TextPassword"
+                             ErrorMessage="Campo de contraseña obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                   <tr>
                     <td>Confirmar contraseña:</td>
                     <td>
-                        <asp:TextBox ID="TextPassword2" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="TextPassword2" runat="server" MaxLength="10" TextMode="Password"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfv_confirmarPassword" runat="server" ControlToValidate="TextPassword2"
+                             ErrorMessage="Campo de confirmar contraseña obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
                     </td>
                 </tr>
                 <tr>
