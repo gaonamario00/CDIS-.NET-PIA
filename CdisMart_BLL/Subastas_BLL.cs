@@ -28,5 +28,11 @@ namespace CdisMart_BLL
             Subasta_DAL subasta_DAL = new Subasta_DAL();
             subasta_DAL.agregarSubasta(subasta);
         }
+
+        public void actualizarMejorOferta(int AuctionId, decimal amount, int userId)
+        {
+            Subasta_DAL subasta = new Subasta_DAL();
+            subasta.actualizarMejorOferta(AuctionId, amount, userId);
+        }
     }
 }

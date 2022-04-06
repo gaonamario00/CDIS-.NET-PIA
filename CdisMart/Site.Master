@@ -53,6 +53,7 @@
                     <ul class="nav navbar-nav">
                          <li><a runat="server" href="~/CdisMart/Subastas_s.aspx">Ver todas las subastas</a></li>
                         <li><a runat="server" href="~/CdisMart/Subasta_i.aspx">Crear una subasta</a></li>
+                        <li><a runat="server" href="Login.aspx">Cerrar sesion</a></li>
                     </ul>
                     
                 </div>

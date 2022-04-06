@@ -43,6 +43,11 @@ namespace CdisMart
             }
         }
 
+        public void cerrarSesion()
+        {
+            Response.Redirect("../Login.aspx");
+        }
+
         #endregion
     }
 }

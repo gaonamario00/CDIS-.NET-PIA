@@ -15,7 +15,7 @@ namespace CdisMart
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session["Usuario"] = null;
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)

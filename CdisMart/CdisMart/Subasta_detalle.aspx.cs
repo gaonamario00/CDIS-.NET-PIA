@@ -32,8 +32,7 @@ namespace CdisMart.CdisMart
         protected void btnAgregarApuesta_Click(object sender, EventArgs e)
         {
             agregarApuestaAHistorial();
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "ofertar", "alert('Ha ofertado una cantidad de " +TextOferta.Text+" a "+lblName.Text+"')", true);
-            //TextOferta.Text = "0";
+            TextOferta.Text = "0";
         }
         #endregion
 
@@ -62,23 +61,34 @@ namespace CdisMart.CdisMart
             lblDescription.Text = auction.Description;
             lblFechaInicio.Text = auction.StartDate.ToString();
             lblFechaFin.Text = auction.EndDate.ToString();
-            lblWinner.Text = auction.Winner.ToString();
+            lblWinner.Text =  auction.Winner.ToString();
+            lblMejorOferta.Text = auction.HighestBid.ToString();
             lblUserId.Text = auction.UserId.ToString();
 
-            verificarUsuario(int.Parse(auction.UserId.ToString()));
+            verificarOferta(int.Parse(auction.UserId.ToString()), auction.EndDate);
 
             TextOferta.Text = "0";
 
         }
 
-        public void verificarUsuario(int idUserAuction)
+        public void verificarOferta(int idUserAuction, DateTime endDate)
         {
+
+            int offerIsAvailable = DateTime.Compare(endDate, DateTime.Now);
+
             DataTable dt = new DataTable();
             dt = (DataTable)Session["Usuario"];
 
             int idUserCurrent = int.Parse(dt.Rows[0]["UserId"].ToString());
-
-            if(idUserCurrent == idUserAuction)
+            if (offerIsAvailable < 0)
+            {
+                lblFechaExpirada.Visible = true;
+                lblOfertaInfo.Visible = false;
+                lblOferta.Visible = false;
+                TextOferta.Visible = false;
+                btnAgregarApuesta.Visible = false;
+            }
+            if (idUserCurrent == idUserAuction)
             {
                 lblOfertaInfo.Visible=false;
                 lblOferta.Visible = false;
@@ -90,14 +100,18 @@ namespace CdisMart.CdisMart
 
         public void agregarApuestaAHistorial()
         {
-            //if (lblWinner)
-            //{
 
-            //}
             DataTable dt = new DataTable();
-            dt = (DataTable)Session["Usuario"];
 
-            int idUserCurrent = int.Parse(dt.Rows[0]["UserId"].ToString());
+            int idUserCurrent = 0;
+
+            try
+            {
+                dt = (DataTable)Session["Usuario"];
+                idUserCurrent = int.Parse(dt.Rows[0]["UserId"].ToString());
+            }
+            catch { Response.Redirect("~/Login.aspx"); }
+
 
             SubastaHistorial_BLL subastaHistorial_BLL = new SubastaHistorial_BLL();
             AuctionRecord auctionRecord = new AuctionRecord();
@@ -107,9 +121,47 @@ namespace CdisMart.CdisMart
             auctionRecord.Amount = decimal.Parse(TextOferta.Text);
             auctionRecord.BidDate = DateTime.Now;
 
-            subastaHistorial_BLL.agregarApuestaAHistorial(auctionRecord);
+            try
+            {
+                decimal parametro;
+
+                if (lblMejorOferta.Text.Equals(null) || lblMejorOferta.Text.Equals("")) parametro = 0;
+                else parametro = decimal.Parse(lblMejorOferta.Text);
+
+                subastaHistorial_BLL.agregarApuestaAHistorial(auctionRecord, parametro);
+
+                lblMejorOferta.Text = auctionRecord.Amount.ToString();
+                lblWinner.Text = auctionRecord.UserId.ToString();
+                lblFueraDeRango.Visible = false;
+                lblOfertaDebeSerMejor.Visible = false;
+                
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ofertar", "alert('Ha ofertado una cantidad de " + TextOferta.Text + " a " + lblName.Text + "')", true);
+            }
+            catch (Exception e)
+            {
+                // 1 - Cantidad fuera de rango (0-1,000,000)
+                // 2 - Cantidad menor a la mejor oferta
+                // 3 - La subasta ha finalizado
+                // 4 - No se le permite ofertar en esta subasta (el usuario es el propiertario de la subasta)
+
+                switch (e.Message)
+                {
+                    case "1":
+                        lblFueraDeRango.Visible = true;
+                        break;
+                    case "2":
+                        lblOfertaDebeSerMejor.Visible = true;
+                        break;
+                    default:
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('" + e.Message + "')", true);
+                        break;
+                }
+
+            }
+
 
         }
+        
 
         #endregion
 

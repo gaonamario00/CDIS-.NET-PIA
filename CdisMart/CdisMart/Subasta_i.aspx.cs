@@ -52,18 +52,25 @@ namespace CdisMart.CdisMart
 
         public void agregarSubasta()
         {
-
+            Auction subasta = new Auction();
             DataTable dt = new DataTable();
-            dt = (DataTable)Session["Usuario"];
+
 
             Subastas_BLL subastas_BLL = new Subastas_BLL();
 
-            Auction subasta = new Auction();
+ 
             subasta.ProductoName = TextName.Text;
             subasta.Description = TextDescription.Text;
             subasta.StartDate = Convert.ToDateTime(TextFechaInicio.Text);
             subasta.EndDate = Convert.ToDateTime(TextFechaFin.Text);
-            subasta.UserId = int.Parse(dt.Rows[0]["UserId"].ToString());
+
+            try
+            {
+                dt = (DataTable)Session["Usuario"];
+                subasta.UserId = int.Parse(dt.Rows[0]["UserId"].ToString());
+            }
+            catch { Response.Redirect("~/Login.aspx"); }
+
 
             subastas_BLL.agregarSubasta(subasta);
         }

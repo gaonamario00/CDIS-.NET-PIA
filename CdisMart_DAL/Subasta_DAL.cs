@@ -46,5 +46,18 @@ namespace CdisMart_DAL
             model.SaveChanges();
         }
 
+        public void actualizarMejorOferta(int AuctionId, decimal amount, int winner)
+        {
+            var subasta = (from s in model.Auction
+                          where s.AuctionId == AuctionId
+                          select s).FirstOrDefault();
+
+            subasta.HighestBid = amount;
+            subasta.Winner = winner;
+
+            model.SaveChanges();
+
+        }
+
     }
 }

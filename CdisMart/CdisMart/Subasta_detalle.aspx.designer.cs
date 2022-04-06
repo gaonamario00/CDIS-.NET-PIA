@@ -69,6 +69,15 @@ namespace CdisMart.CdisMart
         protected global::System.Web.UI.WebControls.Label lblFechaFin;
 
         /// <summary>
+        /// Control lblMejorOferta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMejorOferta;
+
+        /// <summary>
         /// Control lblWinner.
         /// </summary>
         /// <remarks>
@@ -87,6 +96,15 @@ namespace CdisMart.CdisMart
         protected global::System.Web.UI.WebControls.Label lblUserId;
 
         /// <summary>
+        /// Control lblFechaExpirada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFechaExpirada;
+
+        /// <summary>
         /// Control lblUserOferta.
         /// </summary>
         /// <remarks>
@@ -94,6 +112,24 @@ namespace CdisMart.CdisMart
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblUserOferta;
+
+        /// <summary>
+        /// Control lblFueraDeRango.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFueraDeRango;
+
+        /// <summary>
+        /// Control lblOfertaDebeSerMejor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOfertaDebeSerMejor;
 
         /// <summary>
         /// Control lblOfertaInfo.

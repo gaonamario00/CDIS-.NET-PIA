@@ -40,10 +40,16 @@ namespace CdisMart.CdisMart
         #region Metodos
         public void cargarUsuarios(int AuctionId)
         {
+            int userId = 0;
 
             DataTable dt = new DataTable();
-            dt = (DataTable)Session["Usuario"];
-            int userId = int.Parse(dt.Rows[0]["UserId"].ToString());
+            try
+            {
+                dt = (DataTable)Session["Usuario"];
+                userId = int.Parse(dt.Rows[0]["UserId"].ToString());
+            }
+            catch { Response.Redirect("~/Login.aspx"); }
+            
 
             SubastaHistorial_BLL subastaHistorial_BLL = new SubastaHistorial_BLL();
 
@@ -62,6 +68,8 @@ namespace CdisMart.CdisMart
 
         public void cargarHistorialPorUsuario()
         {
+
+            if (Session["Usuario"] == null) Response.Redirect("~/Login.aspx");
 
             int userId = int.Parse(ddlUsuarios.SelectedValue);
 
