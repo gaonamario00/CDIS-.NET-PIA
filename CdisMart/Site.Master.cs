@@ -17,10 +17,9 @@ namespace CdisMart
             {
                 if (sesionIniciada())
                 {
-                    //Something here
-                    //DataTable dt = new DataTable();
-                    //dt = (DataTable)Session["Usuario"];
-                    //lblNombreUsuario.Text = "Bienvenido " + dt.Rows[0]["Name"].ToString();
+                    DataTable dt = new DataTable();
+                    dt = (DataTable)Session["Usuario"];
+                    lblNombreUsuario.Text = "Bienvenido " + dt.Rows[0]["Name"].ToString();
                 }
                 else
                 {

@@ -56,7 +56,7 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:Button ID="btnregistrarse" Text="Registrarse" runat="server" OnClick="btnregistrarse_Click"/>
+                        <asp:Button ID="btnregistrarse" Text="Registrarse" runat="server" OnClick="btnregistrarse_Click" ValidationGroup="vlg1"/>
                     </td>
                 </tr>
             </table>

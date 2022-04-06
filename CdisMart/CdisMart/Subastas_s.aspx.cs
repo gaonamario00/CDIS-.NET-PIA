@@ -6,10 +6,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using CdisMart_BLL;
+
 namespace CdisMart.CdisMart
 {
     public partial class Subastas_s : System.Web.UI.Page
     {
+
+
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,9 +21,8 @@ namespace CdisMart.CdisMart
             {
                 if (sesionIniciada())
                 {
-                    DataTable dt = new DataTable();
-                    dt = (DataTable)Session["Usuario"];
-                    lblNombreUsuario.Text = "Bienvenido " + dt.Rows[0]["Name"].ToString();
+                    grd_subastas.DataSource = cargarSubastas();
+                    grd_subastas.DataBind();
                 }
                 else
                 {
@@ -27,6 +30,15 @@ namespace CdisMart.CdisMart
                 }
             }
         }
+
+        protected void grd_subastas_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName == "Name")
+            {
+                Response.Redirect("~/CdisMart/Subasta_detalle.aspx?pAuctionId="+e.CommandArgument);
+            }
+        }
+
         #endregion
 
         #region Metodos
@@ -43,6 +55,34 @@ namespace CdisMart.CdisMart
             }
         }
 
+        public List<Object> cargarSubastas()
+        {
+             Subastas_BLL subastas_BLL  = new Subastas_BLL();
+            List<Object> subastas = new List<Object>();
+
+            subastas = subastas_BLL.cargarSubastas();
+
+
+
+            return subastas;
+        }
+
         #endregion
+
+        protected void TextBoxFilter_TextChanged(object sender, EventArgs e)
+        {
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "Sesion", "alert('El usuario y/o la contraseña son invalidos!')", true);
+        }
+
+        //public IEnumerable<object> filtrar(string text)
+        //{
+        //    try
+        //    {
+
+        //    }catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
+        //}
     }
 }

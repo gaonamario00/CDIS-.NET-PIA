@@ -2,6 +2,28 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:Label runat="server" ID="lblNombreUsuario"></asp:Label>
+    <br />
+
+    <asp:GridView ID="grd_subastas" runat="server" AutoGenerateColumns="false" OnRowCommand="grd_subastas_RowCommand">
+
+        <Columns>
+           
+            <asp:BoundField HeaderText="ID" DataField="AuctionId" />
+
+
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:LinkButton runat="server" Text='<%# Eval("ProductoName") %>' CommandName="Name" CommandArgument='<%# Eval("AuctionId") %>' ></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
+
+            <asp:BoundField HeaderText="Descripcion" DataField="Description" />
+            <asp:BoundField HeaderText="Inicio" DataField="StartDate" />
+            <asp:BoundField HeaderText="Termina" DataField="EndDate" />
+            <%-- historial --%>
+        </Columns>
+
+    </asp:GridView>
 
 </asp:Content>
+
