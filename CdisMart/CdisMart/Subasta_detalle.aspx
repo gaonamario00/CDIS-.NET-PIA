@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <asp:Label runat="server" ID="lblInfo" Visible="true">Informacion de la subasta</asp:Label>
-
+    <br />
     <br />
     <table>
         <tr>
@@ -50,6 +50,11 @@
                 <asp:Label runat="server" ID="lblOferta" Text="Cantidad a ofertar:"></asp:Label></td>
             <td>
                 <asp:TextBox runat="server" ID="TextOferta" TextMode="Number"></asp:TextBox></td>
+                <asp:RangeValidator MinimumValue='<%# Eval("lblWinner.text") %>' MaximumValue="100000" runat="server" ErrorMessage="La oferta debe de ser un valor entre 0 y 1,000,000" ControlToValidate="TextOferta"></asp:RangeValidator>
+        </tr>
+        <tr>
+            <td></td>
+            <td><asp:Button runat="server" ID="btnAgregarApuesta" Text="Ofertar!" OnClick="btnAgregarApuesta_Click"/></td>
         </tr>
     </table>
 </asp:Content>

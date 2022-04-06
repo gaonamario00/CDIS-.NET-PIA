@@ -20,6 +20,13 @@
             <asp:BoundField HeaderText="Descripcion" DataField="Description" />
             <asp:BoundField HeaderText="Inicio" DataField="StartDate" />
             <asp:BoundField HeaderText="Termina" DataField="EndDate" />
+
+             <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:LinkButton runat="server" Text="Historial" CommandName="Historial" CommandArgument='<%# Eval("AuctionId") %>' ></asp:LinkButton>
+                </ItemTemplate>
+            </asp:TemplateField>
+
             <%-- historial --%>
         </Columns>
 

@@ -20,5 +20,26 @@ namespace CdisMart_DAL
             model.SaveChanges();
         }
 
+        public List<Object> cargarUsuariosPorSubasta(int subastaID, int userActual)
+        {
+            var subastas = from sub in model.AuctionRecord
+                           where sub.AuctionId == subastaID
+                           where sub.UserId != userActual
+                           select new  { UserId = sub.UserId };
+
+            HashSet<Object> resultHash = new HashSet<Object>(subastas.AsEnumerable<Object>().ToList());
+            List<Object> result = resultHash.ToList();
+
+            return result;
+        }
+
+        public List<AuctionRecord> cargarHistorialPorUsuario(int UserId)
+        {
+            var subastas = from sub in model.AuctionRecord
+                           where sub.UserId == UserId
+                           select sub;
+            return subastas.AsEnumerable().ToList();
+        }
+
     }
 }

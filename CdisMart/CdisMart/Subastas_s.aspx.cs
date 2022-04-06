@@ -37,6 +37,10 @@ namespace CdisMart.CdisMart
             {
                 Response.Redirect("~/CdisMart/Subasta_detalle.aspx?pAuctionId="+e.CommandArgument);
             }
+            else
+            {
+                Response.Redirect("~/CdisMart/Subasta_historial.aspx?pAuctionId=" + e.CommandArgument);
+            }
         }
 
         #endregion

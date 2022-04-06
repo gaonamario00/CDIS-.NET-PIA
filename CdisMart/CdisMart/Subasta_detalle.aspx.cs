@@ -29,12 +29,12 @@ namespace CdisMart.CdisMart
                 }
             }
         }
-
-        //protected void btnPrueba_Click(object sender, EventArgs e)
-        //{
-        //    //lblInfo.Visible = false;
-        //}
-
+        protected void btnAgregarApuesta_Click(object sender, EventArgs e)
+        {
+            agregarApuestaAHistorial();
+            Page.ClientScript.RegisterStartupScript(this.GetType(), "ofertar", "alert('Ha ofertado una cantidad de " +TextOferta.Text+" a "+lblName.Text+"')", true);
+            //TextOferta.Text = "0";
+        }
         #endregion
 
         #region Metodos
@@ -67,6 +67,8 @@ namespace CdisMart.CdisMart
 
             verificarUsuario(int.Parse(auction.UserId.ToString()));
 
+            TextOferta.Text = "0";
+
         }
 
         public void verificarUsuario(int idUserAuction)
@@ -82,10 +84,35 @@ namespace CdisMart.CdisMart
                 lblOferta.Visible = false;
                 TextOferta.Visible=false;
                 lblUserOferta.Visible=true;
+                btnAgregarApuesta.Visible=false;
             }
         }
 
+        public void agregarApuestaAHistorial()
+        {
+            //if (lblWinner)
+            //{
+
+            //}
+            DataTable dt = new DataTable();
+            dt = (DataTable)Session["Usuario"];
+
+            int idUserCurrent = int.Parse(dt.Rows[0]["UserId"].ToString());
+
+            SubastaHistorial_BLL subastaHistorial_BLL = new SubastaHistorial_BLL();
+            AuctionRecord auctionRecord = new AuctionRecord();
+
+            auctionRecord.AuctionId = int.Parse(lblID.Text);
+            auctionRecord.UserId = idUserCurrent;
+            auctionRecord.Amount = decimal.Parse(TextOferta.Text);
+            auctionRecord.BidDate = DateTime.Now;
+
+            subastaHistorial_BLL.agregarApuestaAHistorial(auctionRecord);
+
+        }
+
         #endregion
+
 
     }
 }
