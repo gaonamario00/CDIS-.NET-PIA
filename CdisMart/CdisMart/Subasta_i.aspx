@@ -28,7 +28,7 @@
         <tr>
             <td>Fecha de inicio: </td>
             <td>
-                <asp:TextBox runat="server" ID="TextFechaInicio"></asp:TextBox>
+                <asp:TextBox runat="server" ID="TextFechaInicio" AutoCompleteType="Disabled"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_fechaInicio" runat="server" ControlToValidate="TextFechaInicio"
                     ErrorMessage="Campo fecha de inicio es obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
             </td>
@@ -37,9 +37,9 @@
         <tr>
             <td>Fecha de fin: </td>
             <td>
-                <asp:TextBox runat="server" ID="TextFechaFin"></asp:TextBox>
+                <asp:TextBox runat="server" ID="TextFechaFin" AutoCompleteType="Disabled"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_fechaFin" runat="server" ControlToValidate="TextFechaFin"
-                    ErrorMessage="Campo fecha de inicio es obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
+                    ErrorMessage="Campo fecha de fin es obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
             </td>
 
         </tr>
@@ -51,5 +51,25 @@
 
         </tr>
     </table>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $.datetimepicker.setLocale('es');
+            $('#MainContent_TextFechaInicio').datetimepicker({
+                //value: '06/04/2022 15:30',
+                step: 10,
+            });
+
+            $.datetimepicker.setLocale('es');
+            $('#MainContent_TextFechaFin').datetimepicker({
+                //value: '06/04/2022 15:30',
+                step: 10,
+            });
+
+        });
+
+    </script>
 
 </asp:Content>

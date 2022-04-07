@@ -42,11 +42,11 @@ namespace CdisMart.CdisMart
         {
             int userId = 0;
 
-            DataTable dt = new DataTable();
+            UserTable user = new UserTable();
             try
             {
-                dt = (DataTable)Session["Usuario"];
-                userId = int.Parse(dt.Rows[0]["UserId"].ToString());
+                user = (UserTable)Session["Usuario"];
+                userId = int.Parse(user.UserId.ToString());
             }
             catch { Response.Redirect("~/Login.aspx"); }
             

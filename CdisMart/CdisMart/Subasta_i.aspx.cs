@@ -32,7 +32,6 @@ namespace CdisMart.CdisMart
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             agregarSubasta();
-            limpiarCampos();
         }
         #endregion
 
@@ -53,7 +52,9 @@ namespace CdisMart.CdisMart
         public void agregarSubasta()
         {
             Auction subasta = new Auction();
-            DataTable dt = new DataTable();
+            UserTable user = new UserTable();
+
+            
 
 
             Subastas_BLL subastas_BLL = new Subastas_BLL();
@@ -66,13 +67,21 @@ namespace CdisMart.CdisMart
 
             try
             {
-                dt = (DataTable)Session["Usuario"];
-                subasta.UserId = int.Parse(dt.Rows[0]["UserId"].ToString());
+                user = (UserTable)Session["Usuario"];
+                subasta.UserId = int.Parse(user.UserId.ToString());
             }
             catch { Response.Redirect("~/Login.aspx"); }
 
-
-            subastas_BLL.agregarSubasta(subasta);
+            try
+            {
+                subastas_BLL.agregarSubasta(subasta);
+                limpiarCampos();
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ofertar", "alert('Subasta realizada con exito!')", true);
+            }
+            catch (Exception e)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ofertar", "alert('"+e.Message+"')", true);
+            }
         }
 
         public void limpiarCampos()

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using CdisMart_DAL;
 using CdisMart_BLL;
 
 namespace CdisMart
@@ -22,7 +23,6 @@ namespace CdisMart
         {
             if (verificarCampos())
             {
-
             
                 if (usuarioValido())
                 {
@@ -45,13 +45,13 @@ namespace CdisMart
             bool acceso = false;
 
             User_BLL usuarioBLL = new User_BLL();
-            DataTable dtUsuario = new DataTable();
+            UserTable user = new UserTable();
 
-            dtUsuario = usuarioBLL.consultarUsuario(TextUsuario.Text, TextPassword.Text);
+            user = usuarioBLL.consultarUsuario(TextUsuario.Text, TextPassword.Text);
 
-            if (dtUsuario.Rows.Count > 0)
+            if (user != null)
             {
-                Session["Usuario"] = dtUsuario;
+                Session["Usuario"] = user;
                 acceso = true;
 
             }

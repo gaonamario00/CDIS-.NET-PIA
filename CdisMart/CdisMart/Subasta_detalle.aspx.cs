@@ -76,10 +76,11 @@ namespace CdisMart.CdisMart
 
             int offerIsAvailable = DateTime.Compare(endDate, DateTime.Now);
 
-            DataTable dt = new DataTable();
-            dt = (DataTable)Session["Usuario"];
+            UserTable user = new UserTable();
+         
+            user = (UserTable)Session["Usuario"];
+            int idUserCurrent = int.Parse(user.UserId.ToString());
 
-            int idUserCurrent = int.Parse(dt.Rows[0]["UserId"].ToString());
             if (offerIsAvailable < 0)
             {
                 lblFechaExpirada.Visible = true;
@@ -100,15 +101,14 @@ namespace CdisMart.CdisMart
 
         public void agregarApuestaAHistorial()
         {
-
-            DataTable dt = new DataTable();
+            UserTable user = new UserTable();
 
             int idUserCurrent = 0;
 
             try
             {
-                dt = (DataTable)Session["Usuario"];
-                idUserCurrent = int.Parse(dt.Rows[0]["UserId"].ToString());
+                user = (UserTable)Session["Usuario"]; 
+                idUserCurrent = int.Parse(user.UserId.ToString());
             }
             catch { Response.Redirect("~/Login.aspx"); }
 

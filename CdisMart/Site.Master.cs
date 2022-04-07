@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using CdisMart_DAL;
+
 namespace CdisMart
 {
     public partial class SiteMaster : MasterPage
@@ -17,9 +19,9 @@ namespace CdisMart
             {
                 if (sesionIniciada())
                 {
-                    DataTable dt = new DataTable();
-                    dt = (DataTable)Session["Usuario"];
-                    lblNombreUsuario.Text = "Bienvenido " + dt.Rows[0]["Name"].ToString();
+                    UserTable user = new UserTable();
+                    user = (UserTable)Session["Usuario"];
+                    lblNombreUsuario.Text = "Bienvenido " + user.Name;
                 }
                 else
                 {

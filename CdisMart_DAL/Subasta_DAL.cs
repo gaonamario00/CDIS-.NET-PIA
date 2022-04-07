@@ -15,21 +15,11 @@ namespace CdisMart_DAL
             model = new CdisMartEntities();
         }
 
-        public List<Object> cargarSubastas()
+        public List<Auction> cargarSubastas()
         {
             var subastas = from s in model.Auction
-                           select new
-                           {
-                               AuctionId = s.AuctionId,
-                               ProductoName = s.ProductoName,
-                               Description = s.Description,
-                               StartDate = s.StartDate,
-                               EndDate = s.EndDate,
-                               //HighestBid = s.HighestBid,
-                               //Winner = s.Winner,
-                               //UserId = s.UserId
-                           };
-            return subastas.AsEnumerable<Object>().ToList();
+                           select s;
+            return subastas.ToList();
         }
 
         public Auction cargarSubastaPorID(int AuctionID)

@@ -22,8 +22,6 @@ namespace CdisMart
         protected void btnregistrarse_Click(object sender, EventArgs e)
         {
             agregarUsuario();
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta Usuario", "alert('Usuario agregado exitosamente!')", true);
-            Response.Redirect("Login.aspx");
         }
         #endregion
 
@@ -31,17 +29,16 @@ namespace CdisMart
 
         public void agregarUsuario()
         {
+            lblUserNameExist.Visible = false;
+            lblPass.Visible = false;
+
             if (!TextPassword.Text.Equals(TextPassword2.Text))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta Usuario", "alert('Las contraseñas no coinciden')", true);
+                lblPass.Text = "Las contraseñas no coinciden";
+                lblPass.Visible = true;
             }
             else
             {
-
-                if (verificarCampos())
-                {
-
-                
                     User_BLL userBLL = new User_BLL();
 
                     UserTable user = new UserTable();
@@ -54,14 +51,22 @@ namespace CdisMart
                     {
                         userBLL.agreagarUsuario(user);
                         limpiarCampos();
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta Usuario", "alert('Usuario agregado exitosamente!')", true);
+                        Response.Redirect("Login.aspx");
                     }
                     catch (Exception e)
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta Usuario", "alert('"+e.Message+"')", true);
+                        switch (e.Message)
+                        {
+                            case "USERNAME_EXIST":
+                                lblUserNameExist.Text = "Nombre usuario ya existe, por favor ingrese otro";
+                                lblUserNameExist.Visible = true;
+                                break;
+                            default:
+                                Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta Usuario", "alert('" + e.Message + "')", true);
+                                break;
+                        }
                     }
-                }
-                else Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta Usuario", "alert('Campo(s) incorrectos')", true);
-
             }
 
         }
@@ -74,32 +79,6 @@ namespace CdisMart
             TextPassword2.Text = "";
             TextUsuario.Text = "";
         }
-
-        public Boolean verificarCamposVacios()
-        {
-            if (TextNombre.Text.Equals("") || TextUsuario.Text.Equals("") || TextPassword.Text.Equals("") || TextPassword2.Text.Equals(""))
-            {
-                return false;
-            }
-            else return true;
-        }
-
-        public Boolean verificarCampos()
-        {
-            if(verificarEmail() && verificarCamposVacios())
-            return true;
-            else return false;
-        }
-
-        public Boolean verificarEmail()
-        {
-            string pattern = @"[a-z]+[0-9]*@[a-z]+[.]com";
-            Match m = Regex.Match(TextEmail.Text, pattern);
-            if (m.Success) return true;
-            else return false;
-        }
-
-       
 
         #endregion
     }

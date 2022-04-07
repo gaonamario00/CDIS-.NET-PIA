@@ -24,6 +24,24 @@ namespace CdisMart
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control lblUserNameExist.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblUserNameExist;
+
+        /// <summary>
+        /// Control lblPass.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPass;
+
+        /// <summary>
         /// Control TextNombre.
         /// </summary>
         /// <remarks>
@@ -87,6 +105,15 @@ namespace CdisMart
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_userName;
 
         /// <summary>
+        /// Control rev_nombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rev_nombre;
+
+        /// <summary>
         /// Control TextPassword.
         /// </summary>
         /// <remarks>
@@ -105,6 +132,15 @@ namespace CdisMart
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_password;
 
         /// <summary>
+        /// Control rev_password.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rev_password;
+
+        /// <summary>
         /// Control TextPassword2.
         /// </summary>
         /// <remarks>
@@ -121,6 +157,15 @@ namespace CdisMart
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfv_confirmarPassword;
+
+        /// <summary>
+        /// Control rev_password2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator rev_password2;
 
         /// <summary>
         /// Control btnregistrarse.

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using CdisMart_DAL;
 using CdisMart_BLL;
 
 namespace CdisMart.CdisMart
@@ -59,10 +60,10 @@ namespace CdisMart.CdisMart
             }
         }
 
-        public List<Object> cargarSubastas()
+        public List<Auction> cargarSubastas()
         {
              Subastas_BLL subastas_BLL  = new Subastas_BLL();
-            List<Object> subastas = new List<Object>();
+            List<Auction> subastas = new List<Auction>();
 
             subastas = subastas_BLL.cargarSubastas();
 
