@@ -53,6 +53,7 @@ namespace CdisMart.CdisMart
         public void cargarSubastaPorID(int AuctionId)
         {
             Subastas_BLL subastas_BLL = new Subastas_BLL();
+            User_BLL user_BLL = new User_BLL();
             Auction auction = new Auction();
            auction = subastas_BLL.cargarSubastaPorID(AuctionId);
 
@@ -61,9 +62,18 @@ namespace CdisMart.CdisMart
             lblDescription.Text = auction.Description;
             lblFechaInicio.Text = auction.StartDate.ToString();
             lblFechaFin.Text = auction.EndDate.ToString();
-            lblWinner.Text =  auction.Winner.ToString();
-            lblMejorOferta.Text = auction.HighestBid.ToString();
-            lblUserId.Text = auction.UserId.ToString();
+
+            try
+            {
+                lblWinner.Text = user_BLL.obtenerUserNameUsuario((int)auction.Winner);
+            }
+            catch { lblWinner.Text = "Sin ganador"; }
+
+            if (auction.HighestBid == null) lblMejorOferta.Text = "0";
+            else lblMejorOferta.Text = auction.HighestBid.ToString();
+
+
+            lblPropiertario.Text = user_BLL.obtenerUserNameUsuario(auction.UserId);
 
             verificarOferta(int.Parse(auction.UserId.ToString()), auction.EndDate);
 
@@ -112,7 +122,7 @@ namespace CdisMart.CdisMart
             }
             catch { Response.Redirect("~/Login.aspx"); }
 
-
+            User_BLL user_BLL = new User_BLL();
             SubastaHistorial_BLL subastaHistorial_BLL = new SubastaHistorial_BLL();
             AuctionRecord auctionRecord = new AuctionRecord();
 
@@ -131,7 +141,7 @@ namespace CdisMart.CdisMart
                 subastaHistorial_BLL.agregarApuestaAHistorial(auctionRecord, parametro);
 
                 lblMejorOferta.Text = auctionRecord.Amount.ToString();
-                lblWinner.Text = auctionRecord.UserId.ToString();
+                lblWinner.Text = user_BLL.obtenerUserNameUsuario(auctionRecord.UserId);
                 lblFueraDeRango.Visible = false;
                 lblOfertaDebeSerMejor.Visible = false;
                 
@@ -141,8 +151,6 @@ namespace CdisMart.CdisMart
             {
                 // 1 - Cantidad fuera de rango (0-1,000,000)
                 // 2 - Cantidad menor a la mejor oferta
-                // 3 - La subasta ha finalizado
-                // 4 - No se le permite ofertar en esta subasta (el usuario es el propiertario de la subasta)
 
                 switch (e.Message)
                 {

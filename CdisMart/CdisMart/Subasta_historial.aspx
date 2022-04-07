@@ -4,18 +4,18 @@
     <br />
     <table>
         <tr>
-            <td>Producto: </td>
-            <td><asp:Label runat="server" ID="lblProductoName"></asp:Label></td>
+            <td class="texto">Producto: </td>
+            <td><asp:Label runat="server" ID="lblProductoName" CssClass="textoLigth"></asp:Label></td>
         </tr>
         <tr>
-            <td>Descripcion: &nbsp;</td>
-            <td><asp:Label runat="server" ID="lblDescription"></asp:Label></td>
+            <td class="texto">Descripcion: &nbsp;</td>
+            <td><asp:Label runat="server" ID="lblDescription" CssClass="textoLigth"></asp:Label></td>
         </tr>
     </table>
     <br />
-    <asp:Label runat="server" ID="lblMisOfertas" Visible="false">Mis ofertas</asp:Label>
+    <asp:Label runat="server" ID="lblMisOfertas" Visible="false" CssClass="texto">Mis ofertas</asp:Label>
     <br />
-    <asp:GridView ID="grd_misOfertas" AutoGenerateColumns="false" runat="server">
+    <asp:GridView ID="grd_misOfertas" CssClass="contenido" AutoGenerateColumns="false" runat="server">
         <Columns>
             <asp:BoundField HeaderText="Usuario" DataField="UserId" />
             <asp:BoundField HeaderText="Monto" DataField="Amount" />
@@ -28,7 +28,8 @@
         <tr>
             <td><asp:Label runat="server" ID="lblUser" Visible="false">Usuario: &nbsp;</asp:Label></td>
             <td>
-                <asp:DropDownList ID="ddlUsuarios" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlUsuarios_SelectedIndexChanged"></asp:DropDownList>
+                <asp:DropDownList ID="ddlUsuarios" CssClass="listaDropDown" runat="server" 
+                    AutoPostBack="true" OnSelectedIndexChanged="ddlUsuarios_SelectedIndexChanged" Width="150"></asp:DropDownList>
             </td>
         </tr>
     </table>
@@ -36,7 +37,7 @@
 
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
-            <asp:GridView ID="grd_historial" AutoGenerateColumns="false" runat="server">
+            <asp:GridView ID="grd_historial" CssClass="contenido" AutoGenerateColumns="false" runat="server">
                 <Columns>
                     <asp:BoundField HeaderText="Usuario" DataField="UserId" />
                     <asp:BoundField HeaderText="Monto" DataField="Amount" />
@@ -46,4 +47,26 @@
         </ContentTemplate>
     </asp:UpdatePanel>
     <br />
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $(".listaDropDown").chosen();
+
+            $("#<%=grd_misOfertas.ClientID %> tr").each((a) => {
+                console.log(a)
+            });
+
+        });
+
+        var manager = Sys.WebForms.PageRequestManager.getInstance();
+
+        manager.add_endRequest(function () {
+            $(".listaDropDown").chosen();
+        //    $("#ddlUsuarios").css.apply("");
+        });
+
+    </script>
+
 </asp:Content>

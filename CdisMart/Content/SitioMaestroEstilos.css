@@ -1,0 +1,58 @@
+﻿.contenido {
+    border: 1px solid #AB17CF;
+    box-shadow: gray 2px 2px;
+}
+
+.infoCont {
+    border: 1px solid #AB17CF;
+    box-shadow: gray 5px 5px;
+}
+
+.texto {
+    width: 120px;
+    font-weight: bold;
+    text-align: left;
+
+}
+
+.textoLigth {
+    width: 65px;
+    font-weight: lighter;
+}
+
+.subtitlo {
+    text-align:center;
+    width: 65px;
+    font-weight:bolder;
+}
+
+.inputs {
+    box-sizing: border-box;
+    width: 100%;
+    border: solid #AB17CF 2px;
+    padding: 5px;
+    border-radius: 4px;
+    margin: 3px 0;
+    /* text-align: left;
+    width: 60%;
+    padding: initial 200px;
+    margin: 3px 0;
+    display: inline-block;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;*/
+}
+
+.boton {
+    width: 50%;
+    background-color: #D31EC8;
+    color: white;
+    padding: 3px 2px;
+    margin: auto;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .boton:hover {
+        background-color: #AB17CF;
+    }

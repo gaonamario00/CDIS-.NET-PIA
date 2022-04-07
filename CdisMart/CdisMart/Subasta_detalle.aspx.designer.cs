@@ -87,13 +87,13 @@ namespace CdisMart.CdisMart
         protected global::System.Web.UI.WebControls.Label lblWinner;
 
         /// <summary>
-        /// Control lblUserId.
+        /// Control lblPropiertario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserId;
+        protected global::System.Web.UI.WebControls.Label lblPropiertario;
 
         /// <summary>
         /// Control lblFechaExpirada.

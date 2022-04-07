@@ -2,9 +2,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+
     <br />
 
-    <asp:GridView ID="grd_subastas" runat="server" AutoGenerateColumns="false" OnRowCommand="grd_subastas_RowCommand">
+    <asp:GridView CssClass="contenido" ID="grd_subastas" runat="server" AutoGenerateColumns="false" OnRowCommand="grd_subastas_RowCommand">
 
         <Columns>
            

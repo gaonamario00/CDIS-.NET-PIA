@@ -6,11 +6,13 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link href="Content/login.css" rel="stylesheet" />
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
-            <table>
+    <form id="formLogin" runat="server">
+        <h1 class="gradient-text">CDISMART!</h1>
+        <div class="center">
+            <table class="padre">
                 <tr>
                     <td>Nombre usuario:  &nbsp;</td>
                     <td>
@@ -36,12 +38,18 @@
                 <tr>
                     <td></td>
                     <td>
-                        <asp:Button ID="btnIngresar" Text="Ingresar" runat="server" OnClick="btnIngresar_Click" ValidationGroup="vlg1"/>
+                        <asp:Button ID="btnIngresar" Text="Ingresar" runat="server" OnClick="btnIngresar_Click" ValidationGroup="vlg1" />
                     </td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td><a style="padding:7px" href="User_Alta.aspx">Registrarse</a></td>
+                    <td></td>
+                </tr>
             </table>
+
         </div>
-        <a href="User_Alta.aspx">Registrarse</a>
+
     </form>
 </body>
 </html>

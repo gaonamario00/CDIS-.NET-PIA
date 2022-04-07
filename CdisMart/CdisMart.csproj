@@ -113,8 +113,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen.css" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\Login.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\SitioMaestroEstilos.css" />
     <Content Include="datetimepicker-master\.gitignore" />
     <Content Include="datetimepicker-master\build\jquery.datetimepicker.full.js" />
     <Content Include="datetimepicker-master\build\jquery.datetimepicker.full.min.js" />
@@ -167,6 +170,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
