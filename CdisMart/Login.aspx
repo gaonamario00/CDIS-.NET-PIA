@@ -12,7 +12,7 @@
         <div>
             <table>
                 <tr>
-                    <td>Nombre usuario:</td>
+                    <td>Nombre usuario:  &nbsp;</td>
                     <td>
                         <asp:TextBox ID="TextUsuario" runat="server" MaxLength="10"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfv_usuario" runat="server" ControlToValidate="TextUsuario"

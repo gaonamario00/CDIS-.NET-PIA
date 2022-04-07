@@ -25,7 +25,9 @@ namespace CdisMart_DAL
             var subastas = from sub in model.AuctionRecord
                            where sub.AuctionId == subastaID
                            where sub.UserId != userActual
-                           select new  { UserId = sub.UserId };
+                           from userNames in model.UserTable
+                           where sub.UserId == userNames.UserId
+                           select new  { UserId = sub.UserId, UserName = userNames.UserName };
 
             HashSet<Object> resultHash = new HashSet<Object>(subastas.AsEnumerable<Object>().ToList());
             List<Object> result = resultHash.ToList();
@@ -38,8 +40,24 @@ namespace CdisMart_DAL
             var subastas = from sub in model.AuctionRecord
                            where sub.UserId == UserId
                            select sub;
-            return subastas.AsEnumerable().ToList();
+            return subastas.ToList();
         }
 
+        public List<AuctionRecord> cargarHistorialPorSubasta(int auctionId)
+        {
+            var subastas = from sub in model.AuctionRecord
+                           where auctionId == sub.AuctionId
+                           select sub;
+            return subastas.ToList();
+        }
+
+        public List<AuctionRecord> cargarMiHistorialPorSubasta(int userId, int auctionId)
+        {
+            var subastas = from sub in model.AuctionRecord
+                           where auctionId == sub.AuctionId
+                           where userId == sub.UserId
+                           select sub;
+            return subastas.ToList();
+        }
     }
 }

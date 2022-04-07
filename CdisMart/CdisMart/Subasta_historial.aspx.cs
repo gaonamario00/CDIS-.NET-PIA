@@ -21,8 +21,10 @@ namespace CdisMart.CdisMart
                 if (sesionIniciada())
                 {
                     int AuctionId = int.Parse(Request.QueryString["pAuctionId"]);
+                    cargarInfoProducto(AuctionId);
+                    cargarTodoElHistorial(AuctionId);
                     cargarUsuarios(AuctionId);
-                    cargarHistorialPorUsuario();
+                    cargarMisOfertas(AuctionId);
                 }
                 else
                 {
@@ -33,7 +35,13 @@ namespace CdisMart.CdisMart
 
         protected void ddlUsuarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cargarHistorialPorUsuario();
+            if (Session["Usuario"] == null) Response.Redirect("~/Login.aspx");
+
+            if (int.Parse(ddlUsuarios.SelectedValue) == 0)
+            {
+                cargarTodoElHistorial(int.Parse(Request.QueryString["pAuctionId"]));
+            }
+            else cargarHistorialPorUsuario();
         }
         #endregion
 
@@ -43,33 +51,42 @@ namespace CdisMart.CdisMart
             int userId = 0;
 
             UserTable user = new UserTable();
-            try
-            {
-                user = (UserTable)Session["Usuario"];
-                userId = int.Parse(user.UserId.ToString());
-            }
-            catch { Response.Redirect("~/Login.aspx"); }
-            
+            user = (UserTable)Session["Usuario"];
+            userId = int.Parse(user.UserId.ToString());
 
             SubastaHistorial_BLL subastaHistorial_BLL = new SubastaHistorial_BLL();
+            User_DAL user_DAL = new User_DAL();
 
             var listUsers = subastaHistorial_BLL.cargarUsuariosPorSubasta(AuctionId, userId);
 
-            ddlUsuarios.DataSource = listUsers;
-            ddlUsuarios.DataTextField = "UserId";
-            ddlUsuarios.DataValueField = "UserId";             
-            ddlUsuarios.DataBind();
+            if (listUsers.Count == 0)
+            {
+                lblUser.Visible = false;
+                ddlUsuarios.Visible = false;
+                lblListIsEmpty.Visible = true;
+                lblListIsEmpty.Text = "No hay ofertas para este produto";
+            }else
+            {
+                ddlUsuarios.DataSource = listUsers;
+                ddlUsuarios.DataTextField = "UserName";
+                ddlUsuarios.DataValueField = "UserId";
+                ddlUsuarios.DataBind();
 
-            
+                ddlUsuarios.Items.Insert(0, new ListItem("Todos", "0"));
+            }
 
-            ddlUsuarios.Items.Insert(0, new ListItem ("Yo", userId.ToString()));
+        }
 
+        public void cargarTodoElHistorial(int AuctionId)
+        {
+            SubastaHistorial_BLL subastaHistorial_BLL = new SubastaHistorial_BLL ();
+            var listHistorialCompleto = subastaHistorial_BLL.cargarHistorialPorSubasta(AuctionId);
+            grd_historial.DataSource = listHistorialCompleto;
+            grd_historial.DataBind();
         }
 
         public void cargarHistorialPorUsuario()
         {
-
-            if (Session["Usuario"] == null) Response.Redirect("~/Login.aspx");
 
             int userId = int.Parse(ddlUsuarios.SelectedValue);
 
@@ -89,6 +106,36 @@ namespace CdisMart.CdisMart
             {
                 return false;
             }
+        }
+
+        public void cargarInfoProducto(int AuctionId)
+        {
+            Subastas_BLL subastas_BLL = new Subastas_BLL();
+
+            Auction auction = new Auction();
+
+            auction = subastas_BLL.cargarSubastaPorID(AuctionId);
+
+            lblProductoName.Text = auction.ProductoName;
+            lblDescription.Text = auction.Description;
+
+        }
+
+        public void cargarMisOfertas(int auctionId)
+        {
+
+            UserTable user = new UserTable();
+            user = (UserTable)Session["Usuario"];
+
+            SubastaHistorial_BLL subastaHistorial_BLL = new SubastaHistorial_BLL();
+            var listMisOfertas = subastaHistorial_BLL.cargarMiHistorialPorSubasta(int.Parse(user.UserId.ToString()), auctionId);
+            if (listMisOfertas.Count > 0)
+            {
+                lblMisOfertas.Visible = true;
+                grd_misOfertas.DataSource = listMisOfertas;
+                grd_misOfertas.DataBind();
+            }
+
         }
 
         #endregion

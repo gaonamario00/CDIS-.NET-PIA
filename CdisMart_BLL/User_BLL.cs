@@ -50,5 +50,11 @@ namespace CdisMart_BLL
 
         }
 
+        public string obtenerUserNameUsuario(int userId)
+        {
+            User_DAL user = new User_DAL();
+            return user.obtenerUserNameUsuario(userId);
+        }
+
     }
 }

@@ -26,7 +26,7 @@
 
         </tr>
         <tr>
-            <td>Fecha de inicio: </td>
+            <td>Fecha de inicio:  &nbsp;</td>
             <td>
                 <asp:TextBox runat="server" ID="TextFechaInicio" AutoCompleteType="Disabled"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_fechaInicio" runat="server" ControlToValidate="TextFechaInicio"

@@ -39,6 +39,15 @@ namespace CdisMart_DAL
         {
             return model.UserTable.ToList();
         }
+        
+        public string obtenerUserNameUsuario(int userId)
+        {
+            var userName = (from user in model.UserTable
+                           where user.UserId == userId
+                           select user.UserName).FirstOrDefault();
+
+            return userName;
+        }
 
     }
 }

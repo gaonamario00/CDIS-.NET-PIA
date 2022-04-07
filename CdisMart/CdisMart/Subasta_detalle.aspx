@@ -23,7 +23,7 @@
                 <asp:Label runat="server" ID="lblDescription"></asp:Label></td>
         </tr>
         <tr>
-            <td>Fecha de inicio: </td>
+            <td>Fecha de inicio:  &nbsp;</td>
             <td>
                 <asp:Label runat="server" ID="lblFechaInicio"></asp:Label></td>
         </tr>
@@ -65,7 +65,7 @@
     <table>
         <tr>
             <td>
-                <asp:Label runat="server" ID="lblOferta" Text="Cantidad a ofertar:"></asp:Label></td>
+                <asp:Label runat="server" ID="lblOferta" Text="Cantidad a ofertar:  &nbsp;"></asp:Label></td>
             <td>
                 <asp:TextBox runat="server" ID="TextOferta" TextMode="Number"></asp:TextBox></td>
         </tr>

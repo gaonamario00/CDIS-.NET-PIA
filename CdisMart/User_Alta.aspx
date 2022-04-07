@@ -15,7 +15,7 @@
 
             <table>
                 <tr>
-                    <td>Nombre completo:</td>
+                    <td>Nombre completo: </td>
                     <td>
                         <asp:TextBox ID="TextNombre" runat="server" MaxLength="50" ></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfv_nombreCompleto" runat="server" ControlToValidate="TextNombre"
@@ -23,7 +23,7 @@
                     </td>
                 </tr>
                  <tr>
-                    <td>Email:</td>
+                    <td>Email: </td>
                     <td>
                         <asp:TextBox ID="TextEmail" runat="server"></asp:TextBox>
                            <asp:RequiredFieldValidator ID="rfv_email" runat="server" ControlToValidate="TextEmail"
@@ -33,7 +33,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Nombre usuario:</td>
+                    <td>Nombre usuario: </td>
                     <td>
                         <asp:TextBox ID="TextUsuario" runat="server" MaxLength="10"></asp:TextBox>
                          <asp:RequiredFieldValidator ID="rfv_userName" runat="server" ControlToValidate="TextUsuario"
@@ -44,7 +44,7 @@
                     </td>
                 </tr>
                  <tr>
-                    <td>Contraseña:</td>
+                    <td>Contraseña: </td>
                     <td>
                         <asp:TextBox ID="TextPassword" runat="server" MaxLength="10" TextMode="Password"></asp:TextBox>
                          <asp:RequiredFieldValidator ID="rfv_password" runat="server" ControlToValidate="TextPassword"
@@ -55,7 +55,7 @@
                     </td>
                 </tr>
                   <tr>
-                    <td>Confirmar contraseña:</td>
+                    <td>Confirmar contraseña:  &nbsp;</td>
                     <td>
                         <asp:TextBox ID="TextPassword2" runat="server" MaxLength="10" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfv_confirmarPassword" runat="server" ControlToValidate="TextPassword2"
