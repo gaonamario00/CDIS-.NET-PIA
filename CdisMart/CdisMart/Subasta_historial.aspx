@@ -32,6 +32,10 @@
                     AutoPostBack="true" OnSelectedIndexChanged="ddlUsuarios_SelectedIndexChanged" Width="150"></asp:DropDownList>
             </td>
         </tr>
+        <tr>
+            <td><asp:Label runat="server" ID="lbl" Visible="true"></asp:Label></td>
+            <td></td>
+        </tr>
     </table>
         <br />
 
@@ -54,9 +58,48 @@
 
             $(".listaDropDown").chosen();
 
-            $("#<%=grd_misOfertas.ClientID %> tr").each((a) => {
+           <%-- $("#<%=grd_misOfertas.ClientID %> tr").each((a) => {
                 console.log(a)
-            });
+            });--%>
+
+            calcularSumaOfertas();
+
+            function calcularSumaOfertas() {
+
+                var isTheTh = true;
+                var suma = 0;
+
+                $("#<%=grd_historial.ClientID %> tr").each((e, f) => {
+
+                    if (!isTheTh) {
+
+                        var listAmount = f.children;
+
+                        suma += listAmount[1].innerHTML;
+
+                        //console.log(listAmount[1].innerHTML);
+
+                            
+                    } else {
+                            isTheTh = false;
+                    }
+                });
+                // TODO
+                //Setear valor del label
+                $("#MainContent_lbl").attr("value") = suma;
+
+                console.log($("#MainContent_lbl").attr("value"));
+
+                <%--var grid = document.getElementById("<%=grd_misOfertas.ClientID%>");
+                var suma = 0;
+                //for (var i = 0; i < grid.rows.length; i++) {
+                    if (!this.rowIndex) return;
+                    //var Cell = grid.rows[i].getElementsByTagName("input");
+                    //console.log(grid.rows[i].getElementById);
+                    suma += $(this).find("td:last").html();
+                    console.log(suma);
+                //}--%>
+            }
 
         });
 
