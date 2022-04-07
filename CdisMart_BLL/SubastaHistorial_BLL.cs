@@ -48,10 +48,10 @@ namespace CdisMart_BLL
             return cargarHistorial_DAL.cargarUsuariosPorSubasta(subastaID, userActual);
         }
 
-        public List<AuctionRecord> cargarHistorialPorUsuario(int UserId)
+        public List<AuctionRecord> cargarHistorialPorUsuario(int UserId, int auctionId)
         {
             subastaHistorial_DAL cargarHistorial_DAL = new subastaHistorial_DAL();
-            return cargarHistorial_DAL.cargarHistorialPorUsuario(UserId);
+            return cargarHistorial_DAL.cargarHistorialPorUsuario(UserId, auctionId);
         }
 
         public List<AuctionRecord> cargarHistorialPorSubasta(int auctionId)

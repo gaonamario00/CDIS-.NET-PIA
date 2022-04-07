@@ -35,10 +35,11 @@ namespace CdisMart_DAL
             return result;
         }
 
-        public List<AuctionRecord> cargarHistorialPorUsuario(int UserId)
+        public List<AuctionRecord> cargarHistorialPorUsuario(int UserId, int auctionId)
         {
             var subastas = from sub in model.AuctionRecord
                            where sub.UserId == UserId
+                           where sub.AuctionId == auctionId
                            select sub;
             return subastas.ToList();
         }

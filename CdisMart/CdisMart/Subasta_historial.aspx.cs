@@ -41,7 +41,7 @@ namespace CdisMart.CdisMart
             {
                 cargarTodoElHistorial(int.Parse(Request.QueryString["pAuctionId"]));
             }
-            else cargarHistorialPorUsuario();
+            else cargarHistorialPorUsuario(int.Parse(Request.QueryString["pAuctionId"]));
         }
         #endregion
 
@@ -59,21 +59,12 @@ namespace CdisMart.CdisMart
 
             var listUsers = subastaHistorial_BLL.cargarUsuariosPorSubasta(AuctionId, userId);
 
-            if (listUsers.Count == 0)
-            {
-                lblUser.Visible = false;
-                ddlUsuarios.Visible = false;
-                lblListIsEmpty.Visible = true;
-                lblListIsEmpty.Text = "No hay ofertas para este produto";
-            }else
-            {
                 ddlUsuarios.DataSource = listUsers;
                 ddlUsuarios.DataTextField = "UserName";
                 ddlUsuarios.DataValueField = "UserId";
                 ddlUsuarios.DataBind();
 
                 ddlUsuarios.Items.Insert(0, new ListItem("Todos", "0"));
-            }
 
         }
 
@@ -83,15 +74,23 @@ namespace CdisMart.CdisMart
             var listHistorialCompleto = subastaHistorial_BLL.cargarHistorialPorSubasta(AuctionId);
             grd_historial.DataSource = listHistorialCompleto;
             grd_historial.DataBind();
+
+            if (listHistorialCompleto.Count == 0)
+            {
+                lblUser.Visible = false;
+                ddlUsuarios.Visible = false;
+                lblListIsEmpty.Visible = true;
+                lblListIsEmpty.Text = "No hay ofertas para este produto";
+            }
         }
 
-        public void cargarHistorialPorUsuario()
+        public void cargarHistorialPorUsuario(int auctionId)
         {
 
             int userId = int.Parse(ddlUsuarios.SelectedValue);
 
             SubastaHistorial_BLL subastaHistorial_BLL = new SubastaHistorial_BLL();
-            var listHistorialPorUsuario = subastaHistorial_BLL.cargarHistorialPorUsuario(userId);
+            var listHistorialPorUsuario = subastaHistorial_BLL.cargarHistorialPorUsuario(userId, auctionId);
             grd_historial.DataSource = listHistorialPorUsuario;
             grd_historial.DataBind();
         }
