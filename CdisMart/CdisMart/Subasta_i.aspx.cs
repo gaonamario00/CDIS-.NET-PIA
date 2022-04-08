@@ -11,7 +11,7 @@ using System.Data;
 
 namespace CdisMart.CdisMart
 {
-    public partial class Subasta_i : System.Web.UI.Page
+    public partial class Subasta_i : TemaCdisMart, IAcceso
     {
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
@@ -51,6 +51,11 @@ namespace CdisMart.CdisMart
 
         public void agregarSubasta()
         {
+            lblError.Visible = false;
+            imgWarning.Visible = false;
+
+            if (!verificarCampos()) return;
+
             Auction subasta = new Auction();
             UserTable user = new UserTable();
 
@@ -80,7 +85,10 @@ namespace CdisMart.CdisMart
             }
             catch (Exception e)
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "ofertar", "alert('"+e.Message+"')", true);
+                imgWarning.Visible = true;
+                lblError.Text = e.Message+"<br />";
+                lblError.Visible = true;
+                //Page.ClientScript.RegisterStartupScript(this.GetType(), "ofertar", "alert('"+e.Message+"')", true);
             }
         }
 
@@ -90,6 +98,23 @@ namespace CdisMart.CdisMart
             TextDescription.Text = "";
             TextFechaInicio.Text = "";
             TextFechaFin.Text = "";
+        }
+
+        public Boolean verificarCampos()
+        {
+
+            if(TextName.Text.Equals("") ||
+                TextDescription.Text.Equals("") ||
+                TextFechaFin.Text.Equals("") ||
+                TextFechaInicio.Text.Equals(""))
+            {
+                imgWarning.Visible = true;
+                lblError.Text = "Debe de llenar todos los campos<br />";
+                lblError.Visible = true;
+                return false;
+            }
+
+            return true;
         }
 
         #endregion

@@ -20,6 +20,10 @@
     font-weight: lighter;
 }
 
+.negritas {
+    font-weight: bold;
+}
+
 .subtitlo {
     text-align:center;
     width: 65px;

@@ -11,7 +11,7 @@ using CdisMart_DAL;
 
 namespace CdisMart.CdisMart
 {
-    public partial class Subasta_historial : System.Web.UI.Page
+    public partial class Subasta_historial : TemaCdisMart, IAcceso
     {
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
@@ -81,6 +81,7 @@ namespace CdisMart.CdisMart
                 ddlUsuarios.Visible = false;
                 lblListIsEmpty.Visible = true;
                 lblListIsEmpty.Text = "No hay ofertas para este produto";
+                lblSuma.Visible = false;
             }
         }
 
@@ -132,6 +133,7 @@ namespace CdisMart.CdisMart
             {
                 lblMisOfertas.Visible = true;
                 grd_misOfertas.DataSource = listMisOfertas;
+                lblMiSuma.Visible = true;
                 grd_misOfertas.DataBind();
             }
 

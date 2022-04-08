@@ -42,6 +42,15 @@ namespace CdisMart.CdisMart
         protected global::System.Web.UI.WebControls.Label lblMisOfertas;
 
         /// <summary>
+        /// Control lblMiSuma.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMiSuma;
+
+        /// <summary>
         /// Control grd_misOfertas.
         /// </summary>
         /// <remarks>
@@ -78,13 +87,13 @@ namespace CdisMart.CdisMart
         protected global::System.Web.UI.WebControls.DropDownList ddlUsuarios;
 
         /// <summary>
-        /// Control lbl.
+        /// Control lblSuma.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl;
+        protected global::System.Web.UI.WebControls.Label lblSuma;
 
         /// <summary>
         /// Control UpdatePanel1.

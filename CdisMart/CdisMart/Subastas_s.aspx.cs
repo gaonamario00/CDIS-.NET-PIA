@@ -11,13 +11,16 @@ using CdisMart_BLL;
 
 namespace CdisMart.CdisMart
 {
-    public partial class Subastas_s : System.Web.UI.Page
+    public partial class Subastas_s : TemaCdisMart, IAcceso
     {
 
+        int i = 0;
 
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
+            //buscar.Focus();
+
             if (!IsPostBack)
             {
                 if (sesionIniciada())
@@ -34,9 +37,9 @@ namespace CdisMart.CdisMart
 
         protected void grd_subastas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if(e.CommandName == "Name")
+            if (e.CommandName == "Name")
             {
-                Response.Redirect("~/CdisMart/Subasta_detalle.aspx?pAuctionId="+e.CommandArgument);
+                Response.Redirect("~/CdisMart/Subasta_detalle.aspx?pAuctionId=" + e.CommandArgument);
             }
             else
             {
@@ -62,7 +65,7 @@ namespace CdisMart.CdisMart
 
         public List<Auction> cargarSubastas()
         {
-             Subastas_BLL subastas_BLL  = new Subastas_BLL();
+            Subastas_BLL subastas_BLL = new Subastas_BLL();
             List<Auction> subastas = new List<Auction>();
 
             subastas = subastas_BLL.cargarSubastas();
@@ -79,10 +82,16 @@ namespace CdisMart.CdisMart
             Page.ClientScript.RegisterStartupScript(this.GetType(), "Sesion", "alert('El usuario y/o la contraseña son invalidos!')", true);
         }
 
-        //public IEnumerable<object> filtrar(string text)
-        //{
-        //    try
-        //    {
+        public void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Response.Write("i: "+i);
+        }
+
+
+            //public IEnumerable<object> filtrar(string text)
+            //{
+            //    try
+            //    {
 
         //    }catch (Exception ex)
         //    {

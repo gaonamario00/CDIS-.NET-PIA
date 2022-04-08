@@ -3,9 +3,17 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <br />
-    <asp:Label runat="server" Text="Crea tu subasta y gana!" CssClass="subtitlo"></asp:Label>
 
+    <asp:Label runat="server" Text="Crea tu subasta y gana!" CssClass="subtitlo"></asp:Label>
     <br />
+    <br />
+    <div class="input-group">
+        <span id="sizing-addon2">
+            <asp:Image ID="imgWarning" runat="server" ImageUrl="../icons/advertencia.png" Height="20px" Width="20px" Visible="false" />
+        </span>
+        <asp:Label runat="server" ID="lblError" Visible="false"></asp:Label>
+    </div>
+    <%--<asp:Label runat="server" ID="lblError" Visible="false"></asp:Label>--%>
     <br />
     <table>
         <tr>
@@ -13,16 +21,21 @@
             <td>
                 <asp:TextBox runat="server" CssClass="inputs" ID="TextName" MaxLength="50"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_nombre" runat="server" ControlToValidate="TextName"
-                    ErrorMessage="Campo nombre es obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
+                    ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
             </td>
-
+            <td>
+                <asp:Image runat="server" ImageUrl="../icons/informacion.png" Height="20px" Width="20px" ToolTip="Campo nombre es obligatorio" />
+            </td>
         </tr>
         <tr>
             <td class="texto">Descripcion: </td>
             <td>
                 <asp:TextBox runat="server" CssClass="inputs" ID="TextDescription" MaxLength="100"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_descripcion" runat="server" ControlToValidate="TextDescription"
-                    ErrorMessage="Campo descrpcion es obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
+                    ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
+            </td>
+            <td>
+                <asp:Image runat="server" ImageUrl="../icons/informacion.png" Height="20px" Width="20px" ToolTip="Campo descrpcion es obligatorio" />
             </td>
 
         </tr>
@@ -31,7 +44,10 @@
             <td>
                 <asp:TextBox runat="server" CssClass="inputs" ID="TextFechaInicio" AutoCompleteType="Disabled"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_fechaInicio" runat="server" ControlToValidate="TextFechaInicio"
-                    ErrorMessage="Campo fecha de inicio es obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
+                    ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
+            </td>
+            <td>
+                <asp:Image runat="server" ImageUrl="../icons/informacion.png" Height="20px" Width="20px" ToolTip="Campo fecha de inicio es obligatorio" />
             </td>
 
         </tr>
@@ -40,14 +56,17 @@
             <td>
                 <asp:TextBox runat="server" CssClass="inputs" ID="TextFechaFin" AutoCompleteType="Disabled"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfv_fechaFin" runat="server" ControlToValidate="TextFechaFin"
-                    ErrorMessage="Campo fecha de fin es obligatorio" ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
+                    ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
+            </td>
+            <td>
+                <asp:Image runat="server" ImageUrl="../icons/informacion.png" Height="20px" Width="20px" ToolTip="Campo fecha de fin es obligatorio" />
             </td>
 
         </tr>
         <tr>
             <td></td>
             <td colspan="2" style="text-align: center;">
-                <asp:Button runat="server" CssClass="boton" ID="btnAgregrSubasta" Text="Ofertar!" OnClick="btnAgregar_Click" ValidationGroup="vlg1" />
+                <asp:Button runat="server" CssClass="boton" ID="btnAgregrSubasta" Text="Ofertar!" OnClick="btnAgregar_Click" />
             </td>
         </tr>
     </table>

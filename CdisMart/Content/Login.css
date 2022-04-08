@@ -10,6 +10,7 @@
     border: 1px solid #eb94d0;
     box-shadow: gray 5px 5px;
     /*padding-bottom: 20px;*/
+    padding: 20px;
 }
 
 #btnIngresar {
@@ -60,8 +61,8 @@ table {
 
 .padre {
     /*background-color: #fafafa;*/
-    margin: auto;
-    padding: 2rem;
+   /* margin: auto;
+    padding: 2rem;*/
     /*border: 2px solid #ccc;*/
     /* IMPORTANTE */
     text-align: center;

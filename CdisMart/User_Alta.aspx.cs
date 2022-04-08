@@ -16,7 +16,6 @@ namespace CdisMart
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void btnregistrarse_Click(object sender, EventArgs e)
@@ -29,13 +28,19 @@ namespace CdisMart
 
         public void agregarUsuario()
         {
-            lblUserNameExist.Visible = false;
-            lblPass.Visible = false;
+            lblError.Visible = false;
+            imgWarning.Visible = false;
+
+            if (ValidarCampos())
+            {
+
+
 
             if (!TextPassword.Text.Equals(TextPassword2.Text))
             {
-                lblPass.Text = "Las contraseñas no coinciden";
-                lblPass.Visible = true;
+                    imgWarning.Visible = true;
+                    lblError.Text = "Las contraseñas no coinciden";
+                    lblError.Visible = true;
             }
             else
             {
@@ -59,14 +64,17 @@ namespace CdisMart
                         switch (e.Message)
                         {
                             case "USERNAME_EXIST":
-                                lblUserNameExist.Text = "Nombre usuario ya existe, por favor ingrese otro";
-                                lblUserNameExist.Visible = true;
+                                imgWarning.Visible = true;
+                                lblError.Text = "Nombre usuario ya existe";
+                                lblError.Visible = true;
                                 break;
                             default:
                                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Alta Usuario", "alert('" + e.Message + "')", true);
                                 break;
                         }
                     }
+            }
+
             }
 
         }
@@ -78,6 +86,51 @@ namespace CdisMart
             TextPassword.Text = "";
             TextPassword2.Text = "";
             TextUsuario.Text = "";
+        }
+
+        public Boolean ValidarCampos()
+        {
+            if (TextEmail.Text.Equals("") ||
+                TextNombre.Text.Equals("") ||
+                TextPassword.Text.Equals("") ||
+                TextPassword2.Text.Equals("") ||
+                TextUsuario.Text.Equals("") )
+            {
+                imgWarning.Visible = true;
+                lblError.Text = "Todos los campos son obligatorios<br/>";
+                lblError.Visible = true;
+                return false;
+            }
+
+            if(TextNombre.Text.Length > 50)
+            {
+                imgWarning.Visible = true;
+                lblError.Text = "Nombre no debe superar los 50 caracteres<br/>";
+                lblError.Visible = true;
+                return false;
+            }
+
+            string pattern = @"[a-z]+[0-9]*@[a-z]+[.][a-z]+";
+            Match m = Regex.Match(TextEmail.Text, pattern);
+            if (!m.Success)
+            {
+                imgWarning.Visible = true;
+                lblError.Text = "Formato de email incorrecto<br/>";
+                lblError.Visible = true;
+                return false;
+            }
+
+            string patternPass = @"^[a-zA-Z0-9]{6,10}";
+            Match p = Regex.Match(TextPassword.Text, patternPass);
+            if (!p.Success || TextPassword.Text.Length < 6)
+            {
+                imgWarning.Visible = true;
+                lblError.Text = "Formato de contraseña incorrecto<br/>";
+                lblError.Visible = true;
+                return false;
+            }
+
+            return true;
         }
 
         #endregion

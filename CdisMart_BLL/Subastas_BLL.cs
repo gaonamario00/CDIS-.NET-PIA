@@ -37,11 +37,11 @@ namespace CdisMart_BLL
                     {
                         Subasta_DAL subasta_DAL = new Subasta_DAL();
                         subasta_DAL.agregarSubasta(subasta);
-                    }else throw new Exception("Limite de subastas vigentes alcanzado alcanzado");
+                    }else throw new Exception("Limite de subastas vigentes alcanzado alcanzado (3)");
                 }
-                else throw new Exception("Fecha final invalida");
+                else throw new Exception("Fecha final debe ser mayor a la de inicio");
             }
-            else throw new Exception("Fecha inicio invalida");
+            else throw new Exception("Fecha inicio debe ser mayor a la actual");
 
             
         }

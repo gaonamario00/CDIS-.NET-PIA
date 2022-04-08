@@ -24,22 +24,22 @@ namespace CdisMart
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control lblUserNameExist.
+        /// Control imgWarning.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserNameExist;
+        protected global::System.Web.UI.WebControls.Image imgWarning;
 
         /// <summary>
-        /// Control lblPass.
+        /// Control lblError.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPass;
+        protected global::System.Web.UI.WebControls.Label lblError;
 
         /// <summary>
         /// Control TextNombre.
@@ -168,12 +168,12 @@ namespace CdisMart
         protected global::System.Web.UI.WebControls.RegularExpressionValidator rev_password2;
 
         /// <summary>
-        /// Control btnregistrarse.
+        /// Control btnRegistrar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnregistrarse;
+        protected global::System.Web.UI.WebControls.Button btnRegistrar;
     }
 }

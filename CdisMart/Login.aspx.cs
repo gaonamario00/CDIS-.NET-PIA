@@ -21,6 +21,8 @@ namespace CdisMart
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
+            lblError.Visible = false;
+            imgWarning.Visible = false;
             if (verificarCampos())
             {
             
@@ -34,6 +36,7 @@ namespace CdisMart
                 }
             }
         }
+
 
         #endregion
 
@@ -63,12 +66,16 @@ namespace CdisMart
         {
             if (TextUsuario.Text.Equals("") || TextPassword.Text.Equals(""))
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "Sesion", "alert('Debe de llenar todos los campos!')", true);
+                lblError.Text = "Debe de llenar todos los campos<br />";
+                lblError.Visible = true;
+                imgWarning.Visible = true;
                 return false;
             }
+
             else return true;
         }
 
         #endregion
+
     }
 }

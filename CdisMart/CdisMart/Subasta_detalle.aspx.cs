@@ -11,7 +11,7 @@ using CdisMart_DAL;
 
 namespace CdisMart.CdisMart
 {
-    public partial class Subasta_detalle : System.Web.UI.Page
+    public partial class Subasta_detalle : TemaCdisMart, IAcceso
     {
         #region Eventos
         protected void Page_Load(object sender, EventArgs e)

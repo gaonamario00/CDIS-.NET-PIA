@@ -56,8 +56,8 @@
 
 
     <br />
-    <asp:Label runat="server" ID="lblFechaExpirada" Visible="false">Esta subasta ha expirado <br /></asp:Label>
-    <asp:Label runat="server" ID="lblUserOferta" Visible="false">Nota: No puede ofertar en su propia subasta <br /></asp:Label>
+    <asp:Label runat="server" ID="lblFechaExpirada" Visible="false">La subasta ha finalizado <br /></asp:Label>
+    <asp:Label runat="server" ID="lblUserOferta" Visible="false">No se le permite ofertar en esta subasta<br /></asp:Label>
     <asp:Label runat="server" ID="lblFueraDeRango" Visible="false"> Fuera de rango <br /></asp:Label>
     <asp:Label runat="server" ID="lblOfertaDebeSerMejor" Visible="false"> La oferta debe ser mayor que la mejor oferta <br /></asp:Label>
     <asp:Label runat="server" ID="lblOfertaInfo" Visible="true" CssClass="texto">Su oferta</asp:Label>
