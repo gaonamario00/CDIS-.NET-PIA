@@ -35,7 +35,7 @@
                     ValidationGroup="vlg1" Display="Dynamic"></asp:RequiredFieldValidator>
             </td>
             <td>
-                <asp:Image runat="server" ImageUrl="../icons/informacion.png" Height="20px" Width="20px" ToolTip="Campo descrpcion es obligatorio" />
+                <asp:Image runat="server" ImageUrl="../icons/informacion.png" Height="20px" Width="20px" ToolTip="Campo descripcion es obligatorio" />
             </td>
 
         </tr>
@@ -66,7 +66,7 @@
         <tr>
             <td></td>
             <td colspan="2" style="text-align: center;">
-                <asp:Button runat="server" CssClass="boton" ID="btnAgregrSubasta" Text="Ofertar!" OnClick="btnAgregar_Click" />
+                <asp:Button runat="server" CssClass="boton" ID="btnAgregrSubasta" Text="Subastar!" OnClick="btnAgregar_Click" />
             </td>
         </tr>
     </table>

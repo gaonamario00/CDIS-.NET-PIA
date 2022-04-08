@@ -38,7 +38,7 @@
     <table>
         <tr>
             <td>
-                <asp:Label runat="server" ID="lblUser" Visible="false">Usuario: &nbsp;</asp:Label></td>
+                <asp:Label runat="server" ID="lblUser">Usuario: &nbsp;</asp:Label></td>
             <td>
                 <asp:DropDownList ID="ddlUsuarios" CssClass="listaDropDown" runat="server"
                     AutoPostBack="true" OnSelectedIndexChanged="ddlUsuarios_SelectedIndexChanged" Width="150">
