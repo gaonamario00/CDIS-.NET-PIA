@@ -30,10 +30,10 @@ namespace CdisMart_BLL
 
                             using (System.Transactions.TransactionScope ts = new System.Transactions.TransactionScope())
                             {
-                                
+                            
                                 subastaHistorial_DAL.agregarApuestaAHistorial(auctionRecord);
                                 subasta_DAL.actualizarMejorOferta(auctionRecord.AuctionId, auctionRecord.Amount, auctionRecord.UserId);
-
+                            
                             ts.Complete();
                             }
                     }
