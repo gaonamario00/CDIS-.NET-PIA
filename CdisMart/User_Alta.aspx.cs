@@ -120,6 +120,18 @@ namespace CdisMart
                 return false;
             }
 
+            
+
+             string patternUserName = @"^[a-zA-Z0-9]{4,10}";
+             Match u = Regex.Match(TextUsuario.Text, patternUserName);
+            if (!u.Success || TextUsuario.Text.Length < 4)
+            {
+                imgWarning.Visible = true;
+                lblError.Text = "Formato de Nombre de usuario incorrecto<br/>";
+                lblError.Visible = true;
+                return false;
+            }
+
             string patternPass = @"^[a-zA-Z0-9]{6,10}";
             Match p = Regex.Match(TextPassword.Text, patternPass);
             if (!p.Success || TextPassword.Text.Length < 6)
